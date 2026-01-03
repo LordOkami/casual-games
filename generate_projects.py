@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script to generate all 15 independent Godot 4.5.1 casual game projects.
+Script to generate all 16 independent Godot 4.5.1 casual game projects.
 Each game is a standalone project with its own copy of shared files.
 """
 
@@ -100,6 +100,12 @@ GAMES = [
         "name": "Tetris",
         "description": "Classic falling blocks",
         "color": "#009688"
+    },
+    {
+        "folder": "16_bubble_pop",
+        "name": "Bubble Pop",
+        "description": "Pop bubbles before they escape!",
+        "color": "#00bcd4"
     }
 ]
 
@@ -201,7 +207,7 @@ def create_project(game):
     print(f"Created: {game['folder']} - {game['name']}")
 
 def main():
-    print("Generating 15 independent Godot 4.5.1 projects...\n")
+    print("Generating 16 independent Godot 4.5.1 projects...\n")
 
     for game in GAMES:
         create_project(game)
