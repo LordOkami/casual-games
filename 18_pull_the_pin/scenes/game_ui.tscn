@@ -1,0 +1,271 @@
+[gd_scene load_steps=2 format=3 uid="uid://pull_pin_ui"]
+
+[ext_resource type="Script" path="res://scenes/game_ui.gd" id="1_ui"]
+
+[node name="GameUI" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_ui")
+
+[node name="TopBar" type="Control" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 100.0
+grow_horizontal = 2
+
+[node name="Background" type="ColorRect" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.1, 0.12, 0.15, 0.9)
+
+[node name="LevelLabel" type="Label" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -20.0
+offset_right = 200.0
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Level 1"
+vertical_alignment = 1
+
+[node name="StarContainer" type="HBoxContainer" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -20.0
+offset_right = 70.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="HintButton" type="Button" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -25.0
+offset_right = -20.0
+offset_bottom = 25.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
+text = "HINT"
+
+[node name="PauseButton" type="Button" parent="TopBar"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_top = 60.0
+offset_right = -10.0
+offset_bottom = 110.0
+grow_horizontal = 0
+text = "II"
+
+[node name="PopupLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -300.0
+offset_right = 200.0
+offset_bottom = -250.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 25)
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
+theme_override_font_sizes/font_size = 48
+text = "GENIUS!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PausePanel" type="Panel" parent="."]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -120.0
+offset_right = 150.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="PausedLabel" type="Label" parent="PausePanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="ResumeBtn" type="Button" parent="PausePanel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "RESUME"
+
+[node name="RestartBtn" type="Button" parent="PausePanel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "RESTART"
+
+[node name="MenuBtn" type="Button" parent="PausePanel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "MAIN MENU"
+
+[node name="LevelCompletePanel" type="Panel" parent="."]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="LevelCompletePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -200.0
+offset_right = 150.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="CompleteLabel" type="Label" parent="LevelCompletePanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 42
+text = "LEVEL COMPLETE!"
+horizontal_alignment = 1
+
+[node name="GeniusLabel" type="Label" parent="LevelCompletePanel/VBox"]
+layout_mode = 2
+pivot_offset = Vector2(150, 20)
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "GENIUS!"
+horizontal_alignment = 1
+
+[node name="StarsLabel" type="Label" parent="LevelCompletePanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "3 / 3 Stars"
+horizontal_alignment = 1
+
+[node name="BallsSavedLabel" type="Label" parent="LevelCompletePanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Balls Saved: 5 / 5"
+horizontal_alignment = 1
+
+[node name="NextBtn" type="Button" parent="LevelCompletePanel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "NEXT LEVEL"
+
+[node name="RestartBtn" type="Button" parent="LevelCompletePanel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "RETRY"
+
+[node name="MenuBtn" type="Button" parent="LevelCompletePanel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "MAIN MENU"
+
+[node name="GameOverPanel" type="Panel" parent="."]
+process_mode = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -150.0
+offset_right = 150.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="FailLabel" type="Label" parent="GameOverPanel/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 42
+text = "FAILED!"
+horizontal_alignment = 1
+
+[node name="MessageLabel" type="Label" parent="GameOverPanel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+text = "Not enough balls saved"
+horizontal_alignment = 1
+
+[node name="RetryBtn" type="Button" parent="GameOverPanel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "TRY AGAIN"
+
+[node name="MenuBtn" type="Button" parent="GameOverPanel/VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "MAIN MENU"
+
+[connection signal="pressed" from="TopBar/HintButton" to="." method="_on_hint_pressed"]
+[connection signal="pressed" from="TopBar/PauseButton" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="PausePanel/VBox/ResumeBtn" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PausePanel/VBox/RestartBtn" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PausePanel/VBox/MenuBtn" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="LevelCompletePanel/VBox/NextBtn" to="." method="_on_next_level_pressed"]
+[connection signal="pressed" from="LevelCompletePanel/VBox/RestartBtn" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="LevelCompletePanel/VBox/MenuBtn" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="GameOverPanel/VBox/RetryBtn" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="GameOverPanel/VBox/MenuBtn" to="." method="_on_menu_pressed"]

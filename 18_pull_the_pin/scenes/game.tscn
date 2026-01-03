@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://pull_pin_game"]
+
+[ext_resource type="Script" path="res://scenes/game.gd" id="1_game"]
+[ext_resource type="PackedScene" uid="uid://pull_pin_ui" path="res://scenes/game_ui.tscn" id="2_ui"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 720.0
+offset_bottom = 1280.0
+color = Color(0.12, 0.14, 0.18, 1)
+
+[node name="GameContainer" type="Node2D" parent="."]
+
+[node name="Background" type="ColorRect" parent="GameContainer"]
+offset_left = 60.0
+offset_top = 120.0
+offset_right = 660.0
+offset_bottom = 1100.0
+color = Color(0.08, 0.1, 0.12, 1)
+
+[node name="PinContainer" type="Node2D" parent="."]
+
+[node name="BallContainer" type="Node2D" parent="."]
+
+[node name="EffectContainer" type="Node2D" parent="."]
+
+[node name="GameUI" parent="." instance=ExtResource("2_ui")]
+
+[node name="TapLabel" type="Label" parent="."]
+offset_left = 110.0
+offset_top = 1150.0
+offset_right = 610.0
+offset_bottom = 1200.0
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 24
+text = "Tap pins to pull them out"
+horizontal_alignment = 1
