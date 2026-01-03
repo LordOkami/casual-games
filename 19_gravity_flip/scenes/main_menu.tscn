@@ -1,0 +1,143 @@
+[gd_scene load_steps=3 format=3 uid="uid://gravity_flip_menu"]
+
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_menu"]
+
+[sub_resource type="GDScript" id="GDScript_stars"]
+script/source = "extends Node2D
+
+func _draw() -> void:
+	var parent = get_parent()
+	if parent.has_method(\"get\") == false:
+		return
+	var stars = parent.get(\"stars\")
+	if stars == null:
+		return
+	for star in stars:
+		var color = Color(1, 1, 1, star.alpha)
+		draw_circle(Vector2(star.x, star.y), star.size, color)
+"
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.08, 0.04, 0.15, 1)
+
+[node name="GradientOverlay" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.3)
+
+[node name="StarsContainer" type="Node2D" parent="."]
+script = SubResource("GDScript_stars")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -300.0
+offset_right = 280.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Spacer1" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.608, 0.349, 0.714, 1)
+theme_override_font_sizes/font_size = 64
+text = "GRAVITY FLIP"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 22
+text = "One-Touch Platformer"
+horizontal_alignment = 1
+
+[node name="Spacer2" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HighScoreLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "HIGH SCORE: 0"
+horizontal_alignment = 1
+
+[node name="GemsLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.204, 0.596, 0.859, 1)
+theme_override_font_sizes/font_size = 26
+text = "💎 0"
+horizontal_alignment = 1
+
+[node name="Spacer3" type="Control" parent="VBox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
+text = "▶  PLAY"
+
+[node name="SettingsButton" type="Button" parent="VBox"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "SOUND"
+
+[node name="SoundIcon" type="Label" parent="VBox/SettingsButton"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -15.0
+offset_right = -10.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 24
+text = "🔊"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CreditsLabel" type="Label" parent="VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_font_sizes/font_size = 16
+text = "Made with Godot 4.5"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="VBox/PlayButton" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBox/SettingsButton" to="." method="_on_settings_pressed"]
