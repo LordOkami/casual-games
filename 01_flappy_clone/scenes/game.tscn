@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://flappy_game"]
+[gd_scene load_steps=4 format=3 uid="uid://flappy_game"]
 
 [ext_resource type="Script" path="res://scenes/game.gd" id="1_game"]
 [ext_resource type="PackedScene" uid="uid://game_ui_template" path="res://scenes/game_ui.tscn" id="2_ui"]
+[ext_resource type="Script" path="res://scenes/particles.gd" id="3_particles"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_game")
@@ -57,6 +58,9 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5)
 theme_override_font_sizes/font_size = 36
 text = "TAP TO START"
 horizontal_alignment = 1
+
+[node name="ScoreParticles" type="CPUParticles2D" parent="."]
+script = ExtResource("3_particles")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bird"]
 radius = 22.0
