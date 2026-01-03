@@ -6,9 +6,13 @@ const GRID_WIDTH = 18
 const GRID_HEIGHT = 25
 const INITIAL_SPEED = 0.15
 const MIN_SPEED = 0.06
+const COMBO_WINDOW = 2.0  # Time in seconds to maintain/increase combo
+const COMBO_RESET_TIME = 3.0  # Time in seconds before combo resets
+const MAX_COMBO = 5  # Maximum combo multiplier
 
 @onready var snake_container: Node2D = $SnakeContainer
 @onready var food: ColorRect = $Food
+@onready var game_ui: GameUI = $GameUI
 
 var snake: Array[Vector2i] = []
 var direction: Vector2i = Vector2i.UP
@@ -19,6 +23,12 @@ var move_timer: float = 0.0
 var current_speed: float = INITIAL_SPEED
 var food_position: Vector2i
 var swipe_start: Vector2 = Vector2.ZERO
+
+# Combo system variables
+var combo_count: int = 0
+var combo_multiplier: int = 1
+var time_since_last_food: float = 0.0
+var combo_active: bool = false
 
 func _ready() -> void:
 	GameManager.start_game("snake")
@@ -71,6 +81,12 @@ func _process(delta: float) -> void:
 		move_timer = 0.0
 		_move_snake()
 
+	# Track time since last food for combo reset
+	if combo_active:
+		time_since_last_food += delta
+		if time_since_last_food >= COMBO_RESET_TIME:
+			_reset_combo()
+
 func _move_snake() -> void:
 	direction = next_direction
 	var new_head = snake[0] + direction
@@ -89,7 +105,7 @@ func _move_snake() -> void:
 	if not ate_food:
 		snake.pop_back()
 	else:
-		GameManager.add_score()
+		_on_food_eaten()
 		current_speed = max(current_speed - 0.005, MIN_SPEED)
 		_spawn_food()
 	_update_snake_visuals()
@@ -124,3 +140,31 @@ func _game_over() -> void:
 	game_active = false
 	AudioManager.play_sfx("hit")
 	GameManager.end_game()
+
+func _on_food_eaten() -> void:
+	# Check if food was eaten within combo window
+	if combo_active and time_since_last_food <= COMBO_WINDOW:
+		# Increase combo
+		combo_count += 1
+		combo_multiplier = mini(combo_count + 1, MAX_COMBO)
+	else:
+		# Start new combo
+		combo_count = 0
+		combo_multiplier = 1
+
+	# Add score with multiplier
+	GameManager.add_score(combo_multiplier)
+
+	# Activate combo and reset timer
+	combo_active = true
+	time_since_last_food = 0.0
+
+	# Update UI with combo status
+	game_ui.update_combo(combo_multiplier)
+
+func _reset_combo() -> void:
+	combo_count = 0
+	combo_multiplier = 1
+	combo_active = false
+	time_since_last_food = 0.0
+	game_ui.update_combo(0)  # 0 indicates no active combo
