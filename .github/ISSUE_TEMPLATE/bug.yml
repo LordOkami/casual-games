@@ -1,0 +1,84 @@
+name: Bug Report
+description: Report a bug in one of the games
+title: "[BUG] "
+labels: ["ready", "bug"]
+body:
+  - type: dropdown
+    id: game
+    attributes:
+      label: Affected Game
+      description: Which game has the bug?
+      options:
+        - "01_flappy_clone"
+        - "02_stack_tower"
+        - "03_color_switch"
+        - "04_endless_runner"
+        - "05_2048"
+        - "06_snake"
+        - "07_breakout"
+        - "08_tap_dash"
+        - "09_ball_bounce"
+        - "10_whack_a_mole"
+        - "11_doodle_jump"
+        - "12_pong"
+        - "13_memory_match"
+        - "14_fruit_slice"
+        - "15_tetris"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: What is the bug?
+      placeholder: "Player can clip through walls when moving fast"
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can we reproduce the bug?
+      placeholder: |
+        1. Start the game
+        2. Move player to the right wall
+        3. Quickly tap in the opposite direction
+        4. Player clips through wall
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+      placeholder: "Player should stop at the wall boundary"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How severe is this bug?
+      options:
+        - low
+        - medium
+        - high
+        - critical
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Fix Complexity
+      description: How complex is the fix likely to be?
+      options:
+        - simple
+        - medium
+        - complex
+    validations:
+      required: true

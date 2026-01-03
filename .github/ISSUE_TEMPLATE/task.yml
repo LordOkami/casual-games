@@ -1,0 +1,83 @@
+name: Game Task
+description: Create a new task for Lazy Bird to implement
+title: "[GAME] "
+labels: ["ready"]
+body:
+  - type: dropdown
+    id: game
+    attributes:
+      label: Target Game
+      description: Which game should this task be applied to?
+      options:
+        - "01_flappy_clone"
+        - "02_stack_tower"
+        - "03_color_switch"
+        - "04_endless_runner"
+        - "05_2048"
+        - "06_snake"
+        - "07_breakout"
+        - "08_tap_dash"
+        - "09_ball_bounce"
+        - "10_whack_a_mole"
+        - "11_doodle_jump"
+        - "12_pong"
+        - "13_memory_match"
+        - "14_fruit_slice"
+        - "15_tetris"
+        - "All Games"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Task Description
+      description: What needs to be done?
+      placeholder: "Add a power-up system that gives the player temporary invincibility"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Detailed Steps
+      description: Break down the task into specific steps
+      placeholder: |
+        1. Create PowerUp class in scenes/powerup.gd
+        2. Add spawn logic in game.gd
+        3. Implement collision detection
+        4. Add visual feedback when collected
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How will we know the task is complete?
+      placeholder: |
+        - [ ] Power-ups spawn every 30 seconds
+        - [ ] Visual effect shows when collected
+        - [ ] Player becomes invincible for 5 seconds
+        - [ ] Game still runs at 60 FPS
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Complexity
+      description: How complex is this task?
+      options:
+        - simple
+        - medium
+        - complex
+    validations:
+      required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional Notes
+      description: Any other relevant information
+      placeholder: "Consider adding sound effects using the procedural audio system"

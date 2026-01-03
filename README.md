@@ -83,5 +83,43 @@ Si necesitas regenerar la estructura base:
 python3 generate_projects.py
 ```
 
+## Lazy Bird Integration
+
+Este proyecto está configurado con [Lazy Bird](https://github.com/yusufkaraaslan/lazy-bird) para automatización de desarrollo.
+
+### Configuración
+
+La configuración de Lazy Bird está en:
+- `~/.config/lazy_birtd/config.yml` - Configuración principal
+- `.github/ISSUE_TEMPLATE/` - Plantillas de issues para tareas
+
+### Crear Nuevas Tareas
+
+1. Crea un issue en GitHub usando las plantillas disponibles:
+   - **Game Task**: Para mejoras o nuevas características
+   - **New Game Request**: Para solicitar un nuevo juego
+   - **Bug Report**: Para reportar errores
+
+2. Añade la etiqueta `ready` para que Lazy Bird lo procese
+
+3. El sistema automáticamente:
+   - Creará una rama de trabajo
+   - Implementará los cambios
+   - Ejecutará pruebas
+   - Creará un PR
+
+### Comandos Útiles
+
+```bash
+# Verificar estado de Lazy Bird
+cd .lazy-bird && ./wizard.sh --status
+
+# Ver cola de tareas
+ls ~/.config/lazy_birtd/queue/
+
+# Ver logs
+tail -f ~/.config/lazy_birtd/logs/lazy_bird.log
+```
+
 ---
-Creado con Claude Code usando metodología de automatización inspirada en Lazy Bird.
+Creado con Claude Code usando metodología de automatización con Lazy Bird.

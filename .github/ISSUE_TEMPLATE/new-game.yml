@@ -1,0 +1,69 @@
+name: New Game Request
+description: Request a new casual game to be added to the collection
+title: "[NEW GAME] "
+labels: ["ready", "new-game"]
+body:
+  - type: input
+    id: game_name
+    attributes:
+      label: Game Name
+      description: What should the game be called?
+      placeholder: "Puzzle Rush"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Game Description
+      description: Describe the game concept
+      placeholder: "A fast-paced puzzle game where players match shapes against the clock"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: mechanic
+    attributes:
+      label: Primary Mechanic
+      description: What is the main input method?
+      options:
+        - Tap
+        - Swipe
+        - Drag
+        - Hold
+        - Multi-touch
+    validations:
+      required: true
+
+  - type: textarea
+    id: gameplay
+    attributes:
+      label: Gameplay Details
+      description: Describe how the game works
+      placeholder: |
+        - Shapes appear on screen
+        - Player taps matching shapes
+        - Combo system for consecutive matches
+        - Time limit of 60 seconds
+        - Score multiplier for speed
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: Reference Games
+      description: Similar games for inspiration (optional)
+      placeholder: "Similar to Bejeweled or Candy Crush but simpler"
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Implementation Complexity
+      description: How complex is this game?
+      options:
+        - simple
+        - medium
+        - complex
+    validations:
+      required: true
