@@ -106,6 +106,12 @@ GAMES = [
         "name": "Bubble Pop",
         "description": "Pop bubbles before they escape!",
         "color": "#00bcd4"
+    },
+    {
+        "folder": "17_fidget_tap",
+        "name": "Fidget Tap",
+        "description": "A satisfying fidget clicker for stress relief",
+        "color": "#62c5d3"
     }
 ]
 
