@@ -12,6 +12,7 @@ const PIPE_WIDTH = 80.0
 @onready var bird: Area2D = $Bird
 @onready var pipe_container: Node2D = $PipeContainer
 @onready var game_ui = $GameUI
+@onready var score_particles: CPUParticles2D = $ScoreParticles
 
 var velocity: float = 0.0
 var game_started: bool = false
@@ -119,6 +120,7 @@ func _spawn_pipe() -> void:
 func _on_score_area_entered(area: Area2D) -> void:
 	if area.get_parent() == bird:
 		GameManager.add_score()
+		score_particles.emit_celebration(bird.global_position)
 
 func _on_pipe_hit(area: Area2D) -> void:
 	if area.get_parent() == bird:
