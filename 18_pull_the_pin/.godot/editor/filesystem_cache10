@@ -1,0 +1,14 @@
+72322a848ab928aa5c89f0cb78209805
+::res://::1767478471
+icon.svg::CompressedTexture2D::6330146740716258606::1767462506::1767478472::1::::<><><>0<>0<>9820f2f8729d572143b8fdec2e92a0ba<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+::res://assets/::1767462506
+::res://autoload/::1767462506
+audio_manager.gd::GDScript::5675054146130461010::1767462506::0::1::::<>Node<><>0<>0<><>::
+game_manager.gd::GDScript::8542348631706620719::1767462506::0::1::::<>Node<><>0<>0<><>::
+::res://scenes/::1767462506
+game.gd::GDScript::5388154077675713808::1767462506::0::1::::<>Node2D<><>0<>0<><>::
+game.tscn::PackedScene::-1::1767462506::0::1::::<><><>0<>0<><>::res://scenes/game.gd<>res://scenes/game_ui.tscn
+game_ui.gd::GDScript::1738464402150691278::1767462506::0::1::::GameUI<>CanvasLayer<><>0<>0<><>::
+game_ui.tscn::PackedScene::-1::1767462506::0::1::::<><><>0<>0<><>::res://scenes/game_ui.gd
+main_menu.gd::GDScript::8810908652231720451::1767462506::0::1::::<>Control<><>0<>0<><>::
+main_menu.tscn::PackedScene::-1::1767462506::0::1::::<><><>0<>0<><>::res://scenes/main_menu.gd
